@@ -1,0 +1,42 @@
+
+문자열
+------
+print("백분이 불여일견 \n백견이 불여일타")
+
+print('저는'+'"나도코딩"'+'입니다.')
+print("저는 \"나도코딩\" 입니다.")
+print('저는 \'나도코딩\' 입니다')
+
+print("C:\\Users\\coex0\\PycharmProjects\\CTF\\venv\\Scripts\\python.exe") #\\는 두번해야 출력가능
+
+print("Red Apple\rPine")   #\r 은 커서를 맨앞으로 이동시켜줌
+print("Redddd\b\b\bApple")   #\ㅠb는 앞의 문자1개를 삭제시켜줌
+------
+
+Quiz4) 사이트별로 비밀번호를 만들어 주는 프로그램을 작성하시오
+예) http://naver.com
+규칙1 : http://부분을 제외 
+규칙2 : 처음 만나는 점(.) 이후 부분은 제외 => naver
+규칙3 : 남은 글자 중 처음 세자리 + 글자 갯수 + 글자 내 'e' 갯수 + "!" 로 구성
+예시) 생성된 비밀번호 : nav51!
+
+address = "http://naver.com"
+address = address[7:]
+print(address)
+A = address.find(".")
+print(A)
+address = address[:A]
+print(address)
+password = address[0:3] + str(len(address)) + str(address.count("e")) + "!"
+print(f"생성된 비밀번호 : {password}")
+# 내가 푼 풀이
+-----
+
+
+address = "http://google.com"  #naver,daum, google, youtube
+my_str = address.replace("http://", "")
+my_str = my_str[:my_str.index(".")]  #index 또는 find도 가능
+password = my_str[:3] + str(len(my_str)) + str(my_str.count("e")) + "!"
+print(password)
+print("{0} 의 비밀번호는 {1} 입니다.".format(address, password))
+
