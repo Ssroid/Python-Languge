@@ -1,0 +1,90 @@
+# weather = input("오늘 날씨는 어떄요? ")
+# if weather == '비' or weather =="눈":
+#     print("우산을 챙기세요")
+# elif weather =='미세먼지':
+#     print("마스크를 챙기세요")
+# else:
+#     print("준비물이 필요 없어요.")
+
+# Ctrl + / 한꺼번에 주석처리
+#
+
+# temp = int(input("기온은 어떄요? "))
+#
+# if temp >= 30:
+#     print("너무 더워요")
+#
+# elif 10 <= temp <30 :
+#     print("괜찮아요")
+# else:
+#     print("너무 추워요")
+
+# for wating_no in range(0, 10,3):  #range 는 (시작, 끝-1, 배수)
+# #     print(f"대기번호 : {wating_no}")
+# #
+# # starbucks = ["아이언맨", "토르", "아이엠 그루트"]
+# # for customer in starbucks:
+# #     print(f"{customer}, 커피가 준비되었습니다.")
+# #
+# #
+# # visitor = "토르"
+# # index = 5
+# # while True:  #while (조건문)
+# #     print(f"{visitor}, 커피가 준비되었습니다. {index} 번 남았어요")
+# #     index -= 1
+# #     if index == 1:
+# #         print("커피는 판매완료되었습니다.")
+# #         break
+# #
+# # visitor = "토르"
+# # person = "Unknown"
+# #
+# # while person != customer:
+# #     print("{0}, 커피가 {1} 번 준비되었습니다.".format(visitor, index))
+# #     person = input("이름이 어떻해됩니까?")
+# #     print(f"{person} 님 커피가 준비되었습니다.")
+# #     person = customer
+
+# absent = [2, 5, 1, 3]
+# # no_book = [7,8]
+# #
+# # absent = sorted(absent)
+# # print(absent)
+# # for student in range(1,11):
+# #     if student in absent:
+# #         continue
+# #     elif student in no_book:
+# #         print("오늘 수업 여기까지, {0}는 교무실로 따라와".format(student))
+# #         #break
+# #     print(f"{student}, 책을 읽어봐")
+
+students = [1,2,3,4,5]
+print(students)
+students = [i+100 for i in students]
+print(students)
+students.clear()
+print(students)
+students = [i for i in range(1,100,3)]  #1부터 +3의 배수 입력
+print(students)
+
+""" Quiz
+당신은 코코아 서비스를 이용하는 택시 기사입니다.
+50명의 승객과 매칭 기회가 있을 때, 총 탑승 승객 수를 구하는 프로그램을 작성하시오.
+
+조건1: 승객별 운행 소요 시간은 5~ 50분 사이의 난수로 정해집니다.
+조건2: 당신은 소요 시간 5분~15분 사이의 승객만 매칭해야 합니다.
+"""
+from random import *
+
+count = 0
+for i in range(1,51):
+    time = randrange(5,51)
+    #print(time)
+    booler = " "
+
+    if 5<= time < 15:
+        booler = "O"
+        count += 1
+    print(f"[{booler}] {i}번째 손님 (소요시간 : {time}분)")
+
+print("총 탑승 승객 : {0} 분".format(count))
