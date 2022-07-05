@@ -1,0 +1,134 @@
+
+class Unit:
+    def __init__(self, name, hp, damage):
+        self.name = name
+        self.hp = hp
+        self.damage = damage
+        print(f"{self.name} 유닛이 생성 되었습니다.")
+        print(f"체력 {self.hp}, 공격력 {self.damage}")
+
+# #동일한 객체들을 여러개 만들때 유용
+# marine1 = Unit("마린", 40, 5)
+# marine2 = Unit("마린", 40, 5)
+# tank = Unit("탱크", 150, 35)
+#
+# wraith1 = Unit("레이스", 80, 5)
+# print("유닛 이름 : {0}, 공격력 {1}".format(wraith1.name, wraith1.damage))
+# # 이처럼 클래스밖에서도 클래스변수 가능 (멤버변수)
+#
+# #멤버변수를 추가하게
+# wraith2 = Unit("레이스", 80, 5)
+# wraith2.clocking = True
+# #레이스2에만 클로킹기능을 추가 즉 클래스 멤버를 추가
+#
+# if wraith2.clocking == True:
+#     print("{0} 는 현재 클로킹 상태입니다.".format(wraith2.name))
+#
+#
+# class AttackUnit:
+#     def __init__(self, name, hp, damage):
+#         self.name = name
+#         self. hp = hp
+#         self.damage = damage
+#
+#     def attack(self, location):
+#         print("{0} : {1} 방향으로 적군을 공격 합니다. [공격력 {2}"\
+#               .format(self.name, location, self.damage))
+#         #셀프네임과 데미지는 셀프변수를 쓰지만 로케이션은 입력받은 값으로 출력
+#     def damaged(self, damage):
+#         print("{0} : {1} 데미지를 입었습니다.".format(self.name, damage))
+#         self.hp -= damage
+#         print("{0} : 현재 체력은 {1} 입니다".format(self.name, self.hp))
+#         if self.hp <=0:
+#             print("{0} : 파괴되었습니다.".format(self.name))
+#
+# firebat = AttackUnit("파이어뱃", 50, 16)
+# firebat.attack("5시")
+#
+# firebat.damaged(25)  #데미지
+# firebat.damaged(27)  #파괴
+#
+# #######상속클래스
+#
+# class Parant(Unit): #Unit 클래스를 상속
+#     def __inti__(self, name, age):
+#         Unit.__init__(self, name, hp)
+#         self.age = age
+#
+# ######다중상속  (#공중유닛을 생성 기존클래스를 이용해서)
+# class Flyable:
+#     def __init__(self, flying_speed):
+#         self.flying_speed = flying_speed
+#
+#     def fly(self, name, location):
+#         print("{0} : {1} 방향으로 날아갑니다. [속도 {2}" \
+#               .format(name, location, self.flying_speed))
+#
+# class FlyableAttackUnit(AttackUnit, Flyable):
+#     def __init__(self, name, hp, damage, flying_speed):
+#         AttackUnit.__init__(self, name, hp, damage)
+#         Flyable.__init__(self, flying_speed)
+#
+# valkyrie = FlyableAttackUnit("벌카리", 200, 6, 5)
+# valkyrie.fly(valkyrie.name, "3시")
+
+class BuildingUnit(Unit):
+    def __index__(self, name, hp, location):
+        #pass  #이 함수는 일단 완성처럼 보여준다.
+        #Unit.__init__(self, name, hp, 0)
+        super.__init__(name, hp, 0)  #바로 위 코드와 같은 뜻 슈퍼에는 self를 안함
+        self.location = location
+
+# 서플라이 디폿 : 건물1개 -> 8개 유닛가능
+supply_depot = BuildingUnit("서플라이 디폿", 500, "7시")
+
+def game_start():
+    print("[알림] 새로운 게임을 시작합니다.")
+def game_over():
+    pass#그냥 넘어감  함수정의후 아무것도 없으면 오류
+
+game_start()
+game_over()
+"""
+Quiz> 주어진 코드를 활용하여 부동산 프로그램을 작성하시오
+
+(출력 예제)
+총 3대의 매물이 있습니다.
+강남 아파트 매매 10억 2010년
+마포 오피스텔 전세 5억 2007년
+송파 빌라 월세 500/50 2000년
+
+
+[코드]
+class House:
+    def __init__(self, location, house_type, deal_type, price, completion_year)
+        pass
+
+    def show_detail(self):
+        pass
+"""
+
+
+class House:
+    def __init__(self, location, house_type, deal_type, price, completion_year):
+        self.location = location
+        self.house_type = house_type
+        self.deal_type = deal_type
+        self.price = price
+        self.completion_year = completion_year
+
+    def show_detail(self):
+        print(self.location, self.house_type, self.deal_type, self.price,\
+              self.completion_year)
+
+house = []
+Gang = House("강남", "아파트", "매매", "10억", "2010년")
+Mapo = House("마포", "오피스텔", "전세", "5억", "2007년")
+Song = House("송파", "빌라", "월세", "500/50", "2000년")
+house.append(Gang)
+house.append(Mapo)
+house.append(Song)
+
+print("총 {0}대의 매물이 있습니다.".format(len(house)))
+for i in house:
+    i.show_detail()
