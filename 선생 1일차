@@ -1,0 +1,71 @@
+# x = 10
+# y = 10
+# z= x + y
+#
+# class 클래스() :
+#
+#     def __init__(self, 변수): #self 내부적인 함수
+#         super().__init__()
+#         self.변수 = 변수 #전역변수를 할수 있게 도와주는?
+#         self.함수2(f"안녕 {self.변수} {self.print_hi('self _ hi')}")
+#
+#     def 함수2(self, name):
+#         print(name)
+#
+#     def print_hi(self, name) :
+#         x = '안녕' + name
+#         return x
+#
+#     def chul():
+#         print('x가 없어요')
+#
+# if __name__ == '__main__' : #파이썬은 메인함수가 없어서 이부분을 메인함수로 쓴다. 메인함수역할
+#     전달 = 5
+#     클래스(전달)
+
+
+# 과제 class까지 사용해서 깔끔하게
+# 함수 : 리셋, int_input 생성
+# 변수 x,y 이용
+# 리셋은 변수 x와 y값을 0으로 초기화 기능
+# int_input 함수는 호출될때마다 x=1씩, y=2씩 증가
+# 위 동작을 무한루프와 함꼐 응용하기
+
+class 클래스() :
+    def __init__(self, x, y):
+        super().__init__()
+        self.x = x
+        self.y = y
+        #print(f'{x} {y}')
+        # self.리셋
+
+    def 리셋(self):
+        self.x = 0
+        self.y = 0
+        return self.x, self.y
+
+    def int_input(self):
+        self.x += 1
+        self.y += 2
+        return self.x, self.y
+
+if __name__ == '__main__':
+    q, w = 0, 0
+    x = 0
+    숫자 = int(input('멈추려면 :0, 숫자를 높일려면 0보다 큰숫자, 숫자초기화는 0보다 작은숫자 : '))
+
+    while 숫자!=0 :
+        # 숫자증가
+        if 숫자 > 0:
+            q, w = 클래스(q, w).int_input()
+            print(f'{q}, {w}')
+        # 숫자리셋
+        else :
+            q, w = 클래스(q, w).리셋()
+            print(f'{q}, {w}')
+
+        숫자 = int(input('멈추려면 :0, 숫자를 높일려면 0보다 큰숫자, 초기화는 0보다 작은숫자 : '))
+
+
+
+
